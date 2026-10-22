@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenu Abalofei — Security Researcher</title>
+  <meta name="description" content="Bienvenu Abalofei — chercheur en sécurité applicative & bug bounty hunter basé au Bénin. Security researcher and bug bounty hunter based in Benin.">
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #2f81f7;
+      --accent-soft: rgba(47, 129, 247, 0.12);
+      --green: #3fb950;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 820px; margin: 0 auto; padding: 0 20px; }
+
+    /* language switch */
+    .langbar { display: flex; justify-content: flex-end; gap: 6px; padding-top: 22px; }
+    .langbar button {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      border-radius: 7px;
+      padding: 6px 13px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .langbar button.active { color: #fff; border-color: var(--accent); background: var(--accent-soft); }
+
+    header { padding: 34px 0 48px; border-bottom: 1px solid var(--border); }
+    .eyebrow {
+      color: var(--accent); font-size: 0.82rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px;
+    }
+    h1 { font-size: 2.6rem; line-height: 1.15; font-weight: 800; letter-spacing: -0.02em; }
+    h1 .sub { display: block; font-size: 1.1rem; font-weight: 500; color: var(--muted); margin-top: 12px; letter-spacing: 0; }
+    .location { margin-top: 20px; color: var(--muted); font-size: 0.95rem; }
+
+    section { padding: 44px 0; border-bottom: 1px solid var(--border); }
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; letter-spacing: -0.01em; }
+    p { color: var(--text); margin-bottom: 14px; }
+    p.muted { color: var(--muted); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 8px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+    .card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+    .card p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .tag {
+      background: var(--accent-soft); color: var(--accent);
+      border: 1px solid rgba(47,129,247,0.25); border-radius: 20px;
+      padding: 5px 13px; font-size: 0.82rem; font-weight: 500;
+    }
+
+    .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+    .links a {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 11px 18px; color: var(--text);
+      text-decoration: none; font-size: 0.92rem; font-weight: 500;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+    .links a:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+    footer { padding: 36px 0 60px; color: var(--muted); font-size: 0.85rem; text-align: center; }
+
+    [data-lang-en] { display: none; }
+    html[data-active="en"] [data-lang-fr] { display: none; }
+    html[data-active="en"] [data-lang-en] { display: revert; }
+
+    @media (max-width: 600px) {
+      header { padding: 24px 0 36px; }
+      h1 { font-size: 2rem; }
+      section { padding: 34px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="langbar">
+      <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
+      <button id="btn-en" onclick="setLang('en')">EN</button>
+    </div>
+
+    <header>
+      <div class="eyebrow">
+        <span data-lang-fr>Chercheur en sécurité · Bug Bounty Hunter</span>
+        <span data-lang-en>Security Researcher · Bug Bounty Hunter</span>
+      </div>
+      <h1>
+        Bienvenu Abalofei
+        <span class="sub" data-lang-fr>Sécurité applicative &amp; recherche de vulnérabilités</span>
+        <span class="sub" data-lang-en>Application security &amp; vulnerability research</span>
+      </h1>
+      <div class="location">
+        <span data-lang-fr>📍 Bénin · Ouvert aux missions et opportunités en cybersécurité</span>
+        <span data-lang-en>📍 Benin · Open to cybersecurity work and opportunities</span>
+      </div>
+    </header>
+
+    <section>
+      <h2><span data-lang-fr>À propos</span><span data-lang-en>About</span></h2>
+      <p data-lang-fr>
+        Je suis chercheur en sécurité applicative et bug bounty hunter. Je traque des
+        vulnérabilités web — contrôle d'accès (IDOR), logique métier, injection — sur
+        des programmes de bug bounty, avec une méthodologie rigoureuse : cartographie
+        de la surface, tests croisés contrôlés et preuves reproductibles.
+      </p>
+      <p data-lang-en>
+        I'm an application security researcher and bug bounty hunter. I hunt for web
+        vulnerabilities — access control (IDOR), business logic, injection — across
+        bug bounty programs, with a rigorous methodology: surface mapping, controlled
+        cross-account testing, and reproducible proofs.
+      </p>
+      <p class="muted" data-lang-fr>
+        Je développe aussi des applications web pour mes propres projets et pour des
+        collaborations ponctuelles.
+      </p>
+      <p class="muted" data-lang-en>
+        I also build web applications for my own projects and occasional collaborations.
+      </p>
+    </section>
+
+    <section>
+      <h2><span data-lang-fr>Expertise</span><span data-lang-en>Expertise</span></h2>
+      <div class="grid">
+        <div class="card">
+          <h3>🔐 <span data-lang-fr>Sécurité applicative</span><span data-lang-en>Application security</span></h3>
+          <p data-lang-fr>Recherche de vulnérabilités web : IDOR, contrôle d'accès, logique métier, injection.</p>
+          <p data-lang-en>Web vulnerability research: IDOR, access control, business logic, injection.</p>
+        </div>
+        <div class="card">
+          <h3>🎯 <span data-lang-fr>Bug Bounty</span><span data-lang-en>Bug Bounty</span></h3>
+          <p data-lang-fr>Chasseur actif sur HackerOne, Intigriti, Bugcrowd et YesWeHack.</p>
+          <p data-lang-en>Active hunter on HackerOne, Intigriti, Bugcrowd and YesWeHack.</p>
+        </div>
+        <div class="card">
+          <h3>🧪 <span data-lang-fr>Méthodologie &amp; outils</span><span data-lang-en>Methodology &amp; tooling</span></h3>
+          <p data-lang-fr>Interception et analyse de trafic (Caido, Burp), test d'API REST &amp; GraphQL.</p>
+          <p data-lang-en>Traffic interception and analysis (Caido, Burp), REST &amp; GraphQL API testing.</p>
+        </div>
+        <div class="card">
+          <h3>💻 <span data-lang-fr>Développement web</span><span data-lang-en>Web development</span></h3>
+          <p data-lang-fr>Applications &amp; outils sur mesure — projets personnels et collaborations.</p>
+          <p data-lang-en>Custom apps &amp; tools — personal projects and collaborations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2><span data-lang-fr>Compétences</span><span data-lang-en>Skills</span></h2>
+      <div class="tags">
+        <span class="tag">IDOR / Access Control</span>
+        <span class="tag">GraphQL</span>
+        <span class="tag">REST API</span>
+        <span class="tag">Caido</span>
+        <span class="tag">Burp Suite</span>
+        <span class="tag">OWASP</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">React</span>
+        <span class="tag">HTML / CSS</span>
+        <span class="tag">Git</span>
+      </div>
+    </section>
+
+    <section>
+      <h2><span data-lang-fr>Contact</span><span data-lang-en>Contact</span></h2>
+      <p class="muted" data-lang-fr>Disponible pour des missions de sécurité, des collaborations et des opportunités professionnelles.</p>
+      <p class="muted" data-lang-en>Available for security work, collaborations and professional opportunities.</p>
+      <div class="links">
+        <a href="https://github.com/bienb_1" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/bienvenu-abalofei-675889404" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/bienb_1" target="_blank" rel="noopener">X</a>
+        <a href="mailto:abalofeib@gmail.com">Email</a>
+        <a href="https://wa.me/2290145100402" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Bienvenu Abalofei · <span data-lang-fr>Construit avec GitHub Pages</span><span data-lang-en>Built with GitHub Pages</span>
+    </footer>
+
+  </div>
+
+  <script>
+    function setLang(l) {
+      document.documentElement.setAttribute('data-active', l);
+      document.documentElement.setAttribute('lang', l);
+      document.getElementById('btn-fr').classList.toggle('active', l === 'fr');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+    }
+  </script>
+</body>
+</html>
